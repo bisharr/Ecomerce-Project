@@ -12,6 +12,7 @@
   --heading-fontSize: 2rem;
   --small-text-color: #999;
   --heading-text-color: #0a1d37;
+  --color-red: red;
 }
 
 /* reset browser default */
@@ -53,4 +54,12 @@ ul {
 a {
   text-decoration: none;
   color: unset;
+}
+
+img {
+  width: 100%;
+}
+
+section {
+  padding: 60px 0px;
 }
