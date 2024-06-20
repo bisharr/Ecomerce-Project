@@ -30,7 +30,9 @@ const Header = () => {
           <div className='logo'>
             <img src={logo} alt='logo' />
             <div>
-              <h1>Multimarti</h1>
+              <h1>
+                <span className='header-logo'>Elite</span>-Store
+              </h1>
             </div>
           </div>
           <div className='navigation'>

@@ -7,6 +7,11 @@ import '../styles/home.css';
 
 import { Container, Row, Col } from 'reactstrap';
 import heroImg from '../assets/images/hero-img.png';
+
+import Services from '../services/Services';
+import ProductCard from '../components/UI/ProductCard';
+import ProductsList from '../components/UI/ProductsList';
+
 const Home = () => {
   const year = new Date().getFullYear();
   return (
@@ -34,6 +39,18 @@ const Home = () => {
                 <img src={heroImg} alt='' />
               </div>
             </Col>
+          </Row>
+        </Container>
+      </section>
+      <Services />
+
+      <section className='trending_products'>
+        <Container>
+          <Row>
+            <Col lg='12' className='text-center'>
+              <h2 className='section_title'>Trending Products</h2>
+            </Col>
+            <ProductsList />
           </Row>
         </Container>
       </section>

@@ -3,6 +3,7 @@
   height: 70px;
   line-height: 70px;
 }
+
 .nav_wrapper {
   display: flex;
   justify-content: space-between;
