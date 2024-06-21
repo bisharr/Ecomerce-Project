@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import products from '../assets/data/products';
 
 import Helmet from '../components/helmet/Helmet';
 import '../styles/home.css';
@@ -12,8 +13,35 @@ import Services from '../services/Services';
 import ProductCard from '../components/UI/ProductCard';
 import ProductsList from '../components/UI/ProductsList';
 
+import counterImg from '../assets/images/counter-timer-img.png';
+import Clock from '../components/UI/Clock';
+
 const Home = () => {
+  const [trendingProducts, setTrendingProducts] = useState([]);
+  const [bestSalesProducts, setBestSalesProducts] = useState([]);
+  const [newArrivals, setnewArrivals] = useState([]);
+  const [popularCategory, setPopularCategory] = useState([]);
+
   const year = new Date().getFullYear();
+
+  useEffect(() => {
+    const filteredTrendingProducts = products.filter(
+      (item) => item.category === 'chair'
+    );
+    const filteredBestSalesProducts = products.filter(
+      (item) => item.category === 'sofa'
+    );
+    const filteredNewArrivals = products.filter(
+      (item) => item.category === 'mobile' || item.category === 'wireless'
+    );
+    const filteredPopularCategory = products.filter(
+      (item) => item.category === 'watch'
+    );
+    setTrendingProducts(filteredTrendingProducts);
+    setBestSalesProducts(filteredBestSalesProducts);
+    setnewArrivals(filteredNewArrivals);
+    setPopularCategory(filteredPopularCategory);
+  }, []);
   return (
     <Helmet title={'Home'}>
       <section className='hero_section'>
@@ -50,7 +78,60 @@ const Home = () => {
             <Col lg='12' className='text-center'>
               <h2 className='section_title'>Trending Products</h2>
             </Col>
-            <ProductsList />
+            <ProductsList data={trendingProducts} />
+          </Row>
+        </Container>
+      </section>
+      <section className='best_sales'>
+        <Container>
+          <Row>
+            <Col lg='12' className='text-center'>
+              <h2 className='section_title'>Best Sales</h2>
+            </Col>
+            <ProductsList data={bestSalesProducts} />
+          </Row>
+        </Container>
+      </section>
+      {/* ***********fill this Blank******** */}
+      <section className='timer_count'>
+        <Container>
+          <Row>
+            <Col lg='6' md='6'>
+              <div className='clock__top-content'>
+                <h4 className='text-white fs-6 mb-2 '>Limted Offer</h4>
+                <h3 className='text-white fs-5  mb-3 '>Quality Armchair</h3>
+              </div>
+              <Clock />
+              <motion.button
+                whileTap={{ scale: 1.2 }}
+                className='buy__btn store__btn'
+              >
+                <Link to='/shop'>Visit Store</Link>
+              </motion.button>
+            </Col>
+            <Col lg='6' md='6' className='text-end'>
+              <img src={counterImg} alt='' />
+            </Col>
+          </Row>
+        </Container>
+      </section>
+      <section className='new_arrivals'>
+        <Container>
+          <Row>
+            <Col lg='12' className='text-center'>
+              <h2 className='section_title'>New Arrivals</h2>
+            </Col>
+            <ProductsList data={newArrivals} />
+          </Row>
+        </Container>
+      </section>
+      <section className='popular_category'>
+        <Container>
+          <Row>
+            <Col lg='12' className='text-center'>
+              <h2 className='section_title'>Popular Category</h2>
+            </Col>
+            <ProductsList data={popularCategory} />
           </Row>
         </Container>
       </section>
