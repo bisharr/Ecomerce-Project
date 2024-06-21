@@ -46,8 +46,8 @@
   color: var(--primary-color);
   font-weight: 600;
   border: none;
-  padding: 1.3px 5px;
-  border-radius: 6px;
+  padding: 1.5px 5px;
+  border-radius: 5px;
   outline: none;
   cursor: pointer;
 }

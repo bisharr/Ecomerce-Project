@@ -58,7 +58,7 @@ const Home = () => {
                   and elegance.
                 </p>
                 <motion.button whileTap={{ scale: 1.2 }} className='buy_btn'>
-                  <Link to='shop'>Shop Now</Link>
+                  <Link to='/shop'>Shop Now</Link>
                 </motion.button>
               </div>
             </Col>
@@ -75,7 +75,7 @@ const Home = () => {
       <section className='trending_products'>
         <Container>
           <Row>
-            <Col lg='12' className='text-center'>
+            <Col lg='12' className='text-center md-5'>
               <h2 className='section_title'>Trending Products</h2>
             </Col>
             <ProductsList data={trendingProducts} />
@@ -85,7 +85,7 @@ const Home = () => {
       <section className='best_sales'>
         <Container>
           <Row>
-            <Col lg='12' className='text-center'>
+            <Col lg='12' className='text-center md-5'>
               <h2 className='section_title'>Best Sales</h2>
             </Col>
             <ProductsList data={bestSalesProducts} />
