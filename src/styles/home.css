@@ -60,6 +60,24 @@
   .hero_content h2 {
     font-size: 2rem;
   }
+  .section_title {
+    font-size: 1.7rem;
+  }
+  .clock__top-content {
+    text-align: center;
+  }
+  .counter_img {
+    display: none;
+  }
+  .clock__top-content h4 {
+    font-size: 0.9rem;
+  }
+  .clock__top-content h3 {
+    font-size: 1rem;
+  }
+  .count_down-col {
+    text-align: center;
+  }
 }
 @media only screen and (max-width: 768px) {
   .hero_content h2 {
@@ -68,8 +86,11 @@
   .hero_content p {
     font-size: 0.9rem;
   }
-  .buy_btn {
+  .buy_btn a {
     font-size: 0.9rem;
+  }
+  .section_title {
+    font-size: 1.4rem;
   }
 }
 

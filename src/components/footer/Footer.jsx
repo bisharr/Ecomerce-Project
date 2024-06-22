@@ -10,7 +10,7 @@ const Footer = () => {
     <footer className='footer'>
       <Container>
         <Row>
-          <Col lg='4'>
+          <Col lg='4' className='mb-4' md='6'>
             <div className='logo'>
               <div>
                 <h1 className='text-white'>Elite-Store</h1>
@@ -22,7 +22,7 @@ const Footer = () => {
               </p>
             </div>
           </Col>
-          <Col lg='3'>
+          <Col lg='3' md='3' className='mb-4'>
             <div className='footer__quick-link'>
               <h4 className='quick__links-title'>Top Categories</h4>
               <ListGroup className='mb-3'>
@@ -44,7 +44,7 @@ const Footer = () => {
               </ListGroup>
             </div>
           </Col>
-          <Col lg='2'>
+          <Col lg='2' md='3' className='mb-4'>
             <div className='footer__quick-link'>
               <h4 className='quick__links-title'>Useful Links</h4>
               <ListGroup className='mb-3'>
@@ -66,7 +66,7 @@ const Footer = () => {
               </ListGroup>
             </div>
           </Col>
-          <Col lg='3'>
+          <Col lg='3' md='4'>
             <div className='footer__quick-link'>
               <h4 className='quick__links-title'>Contacts</h4>
               <ListGroup className='footer__contact'>
@@ -96,7 +96,7 @@ const Footer = () => {
               </ListGroup>
             </div>
           </Col>
-          <Col lg='12'>
+          <Col lg='12' className='mb-4'>
             <p className='footer__copyright'>
               Copyright {year} developed by Bishar and Abdullahi Ali. All rights
               reserved
