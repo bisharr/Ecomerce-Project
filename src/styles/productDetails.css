@@ -18,3 +18,61 @@
 /* .shortDesc {
   margin-bottom: 30px;
 } */
+.tab_wrapper {
+  color: var(--primary-color);
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.active__tab {
+  font-weight: 700;
+  border-bottom: 1px solid var(--primary-color);
+}
+.tab__content p {
+  line-height: 30px;
+}
+.review__wrapper ul li span {
+  color: coral;
+  font-weight: 600;
+}
+.review__wrapper ul li p {
+  margin-top: 10px;
+}
+.review__form {
+  width: 70%;
+  margin: auto;
+  margin-top: 50px;
+}
+.review__form h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+.form__group input,
+.form__group textarea {
+  width: 100%;
+  border: 1px solid var(--primary-color);
+  border-radius: 5px;
+  padding: 8px 20px;
+}
+.form__group input:focus,
+.form__group textarea:focus {
+  outline: none;
+  border: 2px solid var(--primary-color);
+}
+.form__group {
+  margin-bottom: 30px;
+}
+.form__group span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: coral;
+  font-weight: 600;
+  cursor: pointer;
+}
+.related__title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-top: 30px;
+}
