@@ -18,7 +18,7 @@ const Routers = () => {
       <Route path='checkout' element={<Checkout />} />
       <Route path='login' element={<Login />} />
       <Route path='sigin' element={<Signup />} />
-      <Route path='details' element={<ProductDetails />} />
+      <Route path='shop/:id' element={<ProductDetails />} />
     </Routes>
   );
 };
