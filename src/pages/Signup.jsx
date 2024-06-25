@@ -1,7 +1,67 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Helmet from '../components/helmet/Helmet';
+import { Container, Row, Col, FormGroup } from 'reactstrap';
+import { Link } from 'react-router-dom';
+import '../styles/login.css';
 
 const Signup = () => {
-  return <div>Signup</div>;
+  const [email, SetEmail] = useState('');
+  const [password, SetPassword] = useState('');
+  const [userName, SetuserName] = useState('');
+  const [files, SetFiles] = useState(null);
+  return (
+    <Helmet title='Login'>
+      <section>
+        <Container>
+          <Row>
+            <Col lg='6' className='m-auto text-center'>
+              <h3 className='fw-bold mb-4'>Sign up</h3>
+
+              <form action='' className='auth__form'>
+                <FormGroup className='form__group'>
+                  <input
+                    type='text'
+                    placeholder='Enter userName'
+                    value={userName}
+                    onChange={(e) => SetuserName(e.target.value)}
+                  />
+                </FormGroup>
+                <FormGroup className='form__group'>
+                  <input
+                    type='email'
+                    placeholder='Enter your email'
+                    value={email}
+                    onChange={(e) => SetEmail(e.target.value)}
+                  />
+                </FormGroup>
+                <FormGroup className='form__group'>
+                  <input
+                    type='password'
+                    placeholder='Enter your password'
+                    value={password}
+                    onChange={(e) => SetPassword(e.target.value)}
+                  />
+                </FormGroup>
+                <FormGroup className='form__group'>
+                  <input
+                    type='file'
+                    onChange={(e) => SetFiles(e.target.files[0])}
+                  />
+                </FormGroup>
+
+                <button type='submit' className='buy_btn auth__btn'>
+                  SigUp
+                </button>
+                <p>
+                  Already have an acount ? <Link to='/login'>Login</Link>
+                </p>
+              </form>
+            </Col>
+          </Row>
+        </Container>
+      </section>
+    </Helmet>
+  );
 };
 
 export default Signup;
