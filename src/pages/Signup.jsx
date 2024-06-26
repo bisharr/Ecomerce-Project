@@ -3,9 +3,17 @@ import Helmet from '../components/helmet/Helmet';
 import { Container, Row, Col, FormGroup } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import '../styles/login.css';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../firebase.config';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
+import { setDoc, doc } from 'firebase/firestore';
 
+import { auth } from '../firebase.config';
+import { storage } from '../firebase.config';
+import { db } from '../firebase.config';
+
+import { toast } from 'react-toastify';
+import { getFirestore } from 'firebase/firestore';
+import { getStorage } from 'firebase/storage';
 const Signup = () => {
   const [email, SetEmail] = useState('');
   const [password, SetPassword] = useState('');
@@ -24,8 +32,37 @@ const Signup = () => {
         password
       );
       const user = userCredentials.user;
+
+      const storageRef = ref(Storage, `images/${Date.now() + userName}`);
+      const uploadTask = uploadBytesResumable(storageRef, files);
+
+      uploadTask.on(
+        (error) => {
+          toast.error(error.message);
+        },
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref).then(async (downloadUrl) => {
+            //update user Profile
+            await updateProfile(user, {
+              displayName: userName,
+              photoURL: downloadUrl,
+            });
+
+            //store user data in firestore database
+            await setDoc(doc(db, 'users', user.uid), {
+              uid: user.uid,
+              displayName: userName,
+              email,
+              photoURL: downloadUrl,
+            });
+          });
+        }
+      );
+
       console.log(user);
-    } catch (error) {}
+    } catch (error) {
+      toast.error('something went wrong');
+    }
   };
   return (
     <Helmet title='Login'>
