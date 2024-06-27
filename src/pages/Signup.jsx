@@ -14,56 +14,63 @@ import { db } from '../firebase.config';
 import { toast } from 'react-toastify';
 import { getFirestore } from 'firebase/firestore';
 import { getStorage } from 'firebase/storage';
+import { useNavigate } from 'react-router-dom';
 const Signup = () => {
   const [email, SetEmail] = useState('');
   const [password, SetPassword] = useState('');
-  const [userName, SetuserName] = useState('');
-  const [files, SetFiles] = useState(null);
+  const [username, SetuserName] = useState('');
+  const [file, setFile] = useState(null);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const signup = async (e) => {
     e.preventDefault();
     setLoading(true);
 
     try {
-      const userCredentials = await createUserWithEmailAndPassword(
+      const userCredential = await createUserWithEmailAndPassword(
         auth,
         email,
         password
       );
-      const user = userCredentials.user;
+      const user = userCredential.user;
 
-      const storageRef = ref(Storage, `images/${Date.now() + userName}`);
-      const uploadTask = uploadBytesResumable(storageRef, files);
+      const storageRef = ref(storage, `images/${Date.now() + username}`);
+      const uploadTask = uploadBytesResumable(storageRef, file);
 
       uploadTask.on(
         (error) => {
           toast.error(error.message);
         },
         () => {
-          getDownloadURL(uploadTask.snapshot.ref).then(async (downloadUrl) => {
+          getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
             //update user Profile
             await updateProfile(user, {
-              displayName: userName,
-              photoURL: downloadUrl,
+              displayName: username,
+              photoURL: downloadURL,
             });
 
-            //store user data in firestore database
+            //store user data
             await setDoc(doc(db, 'users', user.uid), {
               uid: user.uid,
-              displayName: userName,
+              displayName: username,
               email,
-              photoURL: downloadUrl,
+              photoURL: downloadURL,
             });
           });
         }
       );
 
       console.log(user);
+      setLoading(false);
+      toast.success('Acount created');
+      navigate('/login');
     } catch (error) {
+      setLoading(false);
       toast.error('something went wrong');
     }
   };
+
   return (
     <Helmet title='Login'>
       <section>
@@ -77,7 +84,7 @@ const Signup = () => {
                   <input
                     type='text'
                     placeholder='Enter userName'
-                    value={userName}
+                    value={username}
                     onChange={(e) => SetuserName(e.target.value)}
                   />
                 </FormGroup>
@@ -100,7 +107,7 @@ const Signup = () => {
                 <FormGroup className='form__group'>
                   <input
                     type='file'
-                    onChange={(e) => SetFiles(e.target.files[0])}
+                    onChange={(e) => setFile(e.target.files[0])}
                   />
                 </FormGroup>
 
