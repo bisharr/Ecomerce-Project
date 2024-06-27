@@ -7,6 +7,9 @@ import ProductDetails from '../pages/ProductDetails';
 import Signup from '../pages/Signup';
 import Shop from '../pages/Shop';
 import Checkout from '../pages/Checkout';
+import ProtectedRout from './ProtectedRout';
+import AdProducts from '../admin/AdProducts';
+import AllProducts from '../admin/AllProducts';
 
 const Routers = () => {
   return (
@@ -15,7 +18,12 @@ const Routers = () => {
       <Route path='home' element={<Home />} />
       <Route path='shop' element={<Shop />} />
       <Route path='cart' element={<Cart />} />
+
+      <Route path='/*' element={<ProtectedRout />} />
       <Route path='checkout' element={<Checkout />} />
+      <Route path='dashboard/all-products' element={<AllProducts />} />
+      <Route path='dashboard/add-products' element={<AdProducts />} />
+
       <Route path='login' element={<Login />} />
       <Route path='signup' element={<Signup />} />
       <Route path='shop/:id' element={<ProductDetails />} />

@@ -80,9 +80,36 @@
   color: var(--primary-color);
   cursor: pointer;
 }
-.nav__icons span img {
+
+.nav__icons .profile img {
   width: 30px;
   height: 30px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+.nav__icons .profile {
+  position: relative;
+  z-index: 9;
+}
+
+.nav__icons .profile .profile__actions {
+  position: absolute;
+  top: 98%;
+  left: 0;
+  width: 150px;
+  z-index: 10;
+  padding: 15px;
+  display: none;
+
+  align-items: center;
+  flex-direction: column;
+  background: var(--card-bg-01);
+  line-height: 30px;
+
+  cursor: pointer;
+}
+.show_profile {
+  display: block;
 }
 .mobile_menu {
   display: none;
@@ -144,10 +171,11 @@
   .cart_icon i {
     font-size: 1.2rem !important;
   }
-  .nav__icons span img {
-    width: 1.6rem;
+  /* .nav__icons .profile img {
+    width: 1, 6rem;
     height: 1.6rem;
-  }
+  } */
+
   .header {
     width: 100%;
     height: 60px;
