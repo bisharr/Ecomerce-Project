@@ -10,6 +10,7 @@ import Checkout from '../pages/Checkout';
 import ProtectedRout from './ProtectedRout';
 import AdProducts from '../admin/AdProducts';
 import AllProducts from '../admin/AllProducts';
+import Dashboard from '../admin/Dashboard';
 
 const Routers = () => {
   return (
@@ -23,6 +24,7 @@ const Routers = () => {
       <Route path='checkout' element={<Checkout />} />
       <Route path='dashboard/all-products' element={<AllProducts />} />
       <Route path='dashboard/add-products' element={<AdProducts />} />
+      <Route path='dashboard' element={<Dashboard />} />
 
       <Route path='login' element={<Login />} />
       <Route path='signup' element={<Signup />} />
