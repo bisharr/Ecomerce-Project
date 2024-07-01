@@ -45,7 +45,7 @@ function AdProducts() {
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
             await addDoc(docRef, {
-              title: enterTitle,
+              productName: enterTitle,
               shortDesc: enterShortDesc,
               description: enterDescription,
               category: enterCategory,
@@ -125,6 +125,7 @@ function AdProducts() {
                         onChange={(e) => setEnterCategory(e.target.value)}
                         required
                       >
+                        <option>Select product</option>
                         <option value='chair'>Chair</option>
                         <option value='mobile'>Mobile</option>
                         <option value='sofa'>Sofa</option>

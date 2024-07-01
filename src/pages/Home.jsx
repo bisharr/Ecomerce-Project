@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import products from '../assets/data/products';
 
 import Helmet from '../components/helmet/Helmet';
 import '../styles/home.css';
